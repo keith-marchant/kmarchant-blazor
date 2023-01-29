@@ -1,3 +1,151 @@
 {
-    
+  "title": "Keith Marchant CV",
+  "description": "CV written in Blazor",
+  "author": "Keith Marchant",
+  "profile": {
+    "name": "Keith Marchant",
+    "tagLine": "Lead Consultant",
+    "profileImage": "profile.jpg"
+  },
+  "Contacts": [
+    {
+      "class": "linkedin",
+      "icon": "linkedin",
+      "url": "https://linkedin.com/in/keith-marchant-906747b",
+      "title": "Keith-Marchant"
+    },
+    {
+      "class": "github",
+      "icon": "github",
+      "url": "https://github.com/keith-marchant",
+      "title": "keith-marchant"
+    },
+    {
+      "class": "website",
+      "icon": "globe",
+      "url": "https://kmarchant.com",
+      "title": "KMarchant.com"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science with Honours",
+      "institution": "University of Waterloo",
+      "dateFrom": "2005",
+      "dateTo": "2010"
+    }
+  ],
+  "Interests": [
+    {
+      "subject": "Cycling"
+    },
+    {
+      "subject": "Soccer"
+    },
+    {
+      "subject": "Video Games"
+    }
+  ],
+  "summary": {
+    "icon": "user",
+    "title": "Career Profile",
+    "text": "Consultant and former development manager with 14 years’ experience developing web and server applications for multiple industries. Currently focused on delivering bespoke solutions leveraging microservices, serverless architectures. Interested in opportunities to provide technical and process leadership to your development organisations."
+  },
+  "experience": {
+    "icon": "briefcase",
+    "title": "Experiences",
+    "jobs": [
+      {
+        "position": "Lead Consultant",
+        "company": "Azenix",
+        "dateFrom": "Sept 2022",
+        "dateTo": "Present",
+        "summary": "Azenix is a consultancy under the Mantel Group providing .NET & Azure services.",
+        "details": [
+          "Implemented event-driven serverless applications for multiple customers",
+          "Managed infrastructure-as-code delivery for multiple applications"
+        ]
+      },
+      {
+        "position": "Solution Architect",
+        "company": "InfoTrack",
+        "dateFrom": "Jan 2021",
+        "dateTo": "Aug 2022",
+        "summary": "InfoTrack is a market leader in providing search and workflow services to the legal industry. InfoTrack provides a single platform for E-Conveyancing, due diligence, and more; tightly integrated into multiple practice management software solutions.",
+        "details": [
+          "Assisted with design and management of InfoTrack's global software platform",
+          "Transitioned from a monolithic .NET 4.5 platform into multiple containerised microservices",
+          "Initiated a migration from Teamcity to Azurte DevOps with builds managed as code",
+          "Adopted Identity Server 4 to create a centralised login experience"
+        ]
+      },
+      {
+        "position": "Development Manager",
+        "company": "InfoTrack",
+        "dateFrom": "May 2016",
+        "dateTo": "Dec 2020",
+        "summary": "",
+        "details": [
+          "Implemented the vision of a shared software platform across three countries",
+          "Managed the development of the core platform and infrastructure used to generate more than $1.5 million/week",
+          "Managed and mentored multiple developers",
+          "Migrated hosting from private cloud to AWS and assisted with the adoption of AWS managed services",
+          "Managed the replacement of synchronous systems with an event driven architecture backed by MassTransit and AmazonMQ"
+        ]
+      },
+      {
+        "position": ".NET Developer",
+        "company": "InfoTrack",
+        "dateFrom": "Sept 2015",
+        "dateTo": "Apr 2016",
+        "summary": "",
+        "details": [
+          "Released new corporate product offerings integrated with ASIC written with Knockout JS and .NET MVC",
+          "Implemented MongoDB document storage for existing XML archives",
+          "Implemented new CI/CD processes and infrastructure worldwide using TeamCity and Octopus Deploy"
+        ]
+      },
+      {
+        "position": "Software Developer",
+        "company": "BlueSun",
+        "dateFrom": "May 2010",
+        "dateTo": "Aug 2015",
+        "summary": "BlueSun is a small Canadian company that specialises in providing web software for the life insurance and mutual fund industries via their WealthServ products.",
+        "details": [
+          "Developed new products using C#, Java, JavaScript, MVC, & SQL Server",
+          "Managed the WealthServ Insurance product as the lead developer",
+          "Triaged all issues related to the WealthServ Insurance platform",
+          "Converted client data for new client installations",
+          "Led the product support team",
+          "Supported the sales process for prospective clients"
+        ]
+      },
+      {
+        "position": "Associate Software Engineer",
+        "company": "Electronic Arts Canada",
+        "dateFrom": "May 2009",
+        "dateTo": "Aug 2009",
+        "summary": "EA Canada is responsible for the development of multiple major sports video game franchises released yearly.",
+        "details": [
+          "Employed as part of a work placement through the University of Waterloo",
+          "Assisted in the development of FIFA 10 on Xbox 360 & PS3",
+          "Implemented tool support code in C# and C++/CLI",
+          "Developed runtime code in C++ for character animations"
+        ]
+      },
+      {
+        "position": "Programming Intern",
+        "company": "Atlantis Cyberspace",
+        "dateFrom": "May 2008",
+        "dateTo": "Dec 2008",
+        "summary": "Atlantis Cyberspace is a small American company based in Hawaii that develops training software for the US armed forces.",
+        "details": [
+          "Developed database interface layer for Unreal 3 based simulation software",
+          "Produced a web portal using ASP.NET web forms for commanding officers to receive real-time reports of simulation participants",
+          "Implemented remoting methods for a server/client architecture",
+          "Implemented C++/CLI and C# interfaces for game engine access"
+        ]
+      }
+    ]
+  }
 }
