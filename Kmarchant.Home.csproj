@@ -11,6 +11,8 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.7" PrivateAssets="all" />
 		<PackageReference Include="MudBlazor" Version="6.0.13" />
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties wwwroot_4resume-data_4resume_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 	
 	
 </Project>
