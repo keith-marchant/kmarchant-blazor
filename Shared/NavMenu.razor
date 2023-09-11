@@ -1,5 +1,13 @@
-﻿<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
-    <MudNavLink Href="fetchdata" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Fetch data</MudNavLink>
+﻿<MudNavMenu Bordered="true" Color="Color.Info">
+    <MudNavGroup Title="CV" Icon="@Icons.Material.Filled.School" @bind-Expanded="_isExpanded">
+        <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Web">Web</MudNavLink>
+        <MudNavLink Href="./resume-data/resume.pdf" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Download" Target="_blank">PDF</MudNavLink>
+    </MudNavGroup>
+    <MudNavLink Href="documents" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.DocumentScanner">Document Converter</MudNavLink>
+    <MudNavLink Href="other" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.MiscellaneousServices">Other</MudNavLink>
 </MudNavMenu>
+
+@code
+{
+    bool _isExpanded = true;
+}

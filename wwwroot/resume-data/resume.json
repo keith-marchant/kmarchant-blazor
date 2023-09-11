@@ -4,10 +4,10 @@
   "author": "Keith Marchant",
   "profile": {
     "name": "Keith Marchant",
-    "tagLine": "Lead Consultant",
-    "profileImage": "profile.jpg"
+    "tagLine": "Lead Software Engineer",
+    "profileImage": "images/profile.jpg"
   },
-  "Contacts": [
+  "contacts": [
     {
       "class": "linkedin",
       "icon": "linkedin",
@@ -35,7 +35,7 @@
       "dateTo": "2010"
     }
   ],
-  "Interests": [
+  "interests": [
     {
       "subject": "Cycling"
     },
@@ -49,21 +49,23 @@
   "summary": {
     "icon": "user",
     "title": "Career Profile",
-    "text": "Consultant and former development manager with 14 years’ experience developing web and server applications for multiple industries. Currently focused on delivering bespoke solutions leveraging microservices, serverless architectures. Interested in opportunities to provide technical and process leadership to your development organisations."
+    "text": "Software developer, architect, and manager with 14+ years’ experience developing web and server applications for multiple industries. Currently focused on helping clients adopt cloud-native solutions while upskilling and growing development teams. Seeking opportunities to assist in the development of event-driven solutions that provide a first-class customer and development experience."
   },
   "experience": {
     "icon": "briefcase",
     "title": "Experiences",
     "jobs": [
       {
-        "position": "Lead Consultant",
+        "position": "Lead Software Engineer",
         "company": "Azenix",
         "dateFrom": "Sept 2022",
-        "dateTo": "Present",
-        "summary": "Azenix is a consultancy under the Mantel Group providing .NET & Azure services.",
+        "dateTo": "June 2023",
+        "summary": "Azenix is a .NET & Azure consulting organisation existing as one of the brands offered by the Mantel Group.",
         "details": [
-          "Implemented event-driven serverless applications for multiple customers",
-          "Managed infrastructure-as-code delivery for multiple applications"
+          "Managed project governance and client stakeholders through multiple engagements",
+          "Designed and built event-sourced systems backed by CosmosDB & Azure Functions",
+          "Delivered Azure Accelerate workshops",
+          "Integrated multiple internal & third-party systems into an event-driven architecture to address key compliance requirements for clients"
         ]
       },
       {
@@ -147,5 +149,16 @@
         ]
       }
     ]
-  }
+  },
+  "skills": [
+    "4 years’ experience managing and mentoring a team of software developers",
+    "14 years’ experience developing full-stack applications using C# and the .NET stack",
+    "Experienced developing with Blazor, MVC, Web API, WCF, WPF, F#, Angular, PowerShell, SQL Server, MySQL, MongoDB, CosmosDB",
+    "Designed, and delivered, event-driven serverless solutions in Azure",
+    "Skilled in Git, TeamCity, GitHub Actions, Azure DevOps, Octopus Deploy, Docker, Kubernetes, Bicep",
+    "Involved in the delivery and management of software projects for multi-country teams",
+    "Experienced in migrating to, and using, the AWS cloud environment",
+    "Strong verbal and written communication skills",
+    "Reliable goal oriented individual with strong work ethic"
+  ]
 }

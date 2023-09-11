@@ -9,5 +9,6 @@ public record Resume(
     List<Education> Education,
     List<Interest> Interests,
     Summary Summary,
-    Experience Experience
+    Experience Experience,
+    List<string> Skills
 );

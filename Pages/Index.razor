@@ -1,7 +1,100 @@
 ﻿@page "/"
+@inject HttpClient Http
+@using Kmarchant.Home.Models
 
-<PageTitle>Index</PageTitle>
+<PageTitle>CV</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
-<MudText Class="mb-8">Welcome to your new app, powered by MudBlazor!</MudText>
-<MudAlert Severity="Severity.Normal">You can find documentation and examples on our website here: <MudLink Href="https://mudblazor.com" Typo="Typo.body2" Color="Color.Inherit"><b>www.mudblazor.com</b></MudLink></MudAlert>
+@if (resume is null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudPaper Elevation="0" Class="pa-4" Style="background-color: inherit">
+        <MudGrid>
+            <MudItem xs="3">
+                <MudImage Src="@resume.Profile.ProfileImage" Width="200" Height="200" Class="rounded-circle border-solid border-2" ObjectFit="ObjectFit.Cover"></MudImage>
+            </MudItem>
+            <MudItem xs="9">
+                <div>
+                    <MudText Typo="Typo.h3" GutterBottom="true">@resume.Profile.Name</MudText>
+                    <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
+                    <MudText Typo="Typo.h5" GutterBottom="true">@resume.Profile.TagLine</MudText>
+                    <MudText Typo="Typo.body1">@resume.Summary.Text</MudText>
+                </div>
+            </MudItem>
+            <MudItem xs="12">
+                <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
+                <div>
+                    <MudIcon Icon="@Icons.Outlined.Rocket" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
+                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Skills</MudText>
+                </div>
+                <MudList Clickable="false" Dense="true" DisableGutters="true">
+                    @foreach (var skill in resume.Skills)
+                    {
+                        <MudListItem Text="@skill" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
+                    }
+                </MudList>
+            </MudItem>
+            <MudItem xs="12">
+                <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
+                <div>
+                    <MudIcon Icon="@Icons.Outlined.BusinessCenter" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
+                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Experience</MudText>
+                </div>
+                @foreach (var role in resume.Experience.Jobs)
+                {
+                    <MudGrid Spacing="0" Style="padding-top: 10px;">
+                        <MudItem xs="6"><MudText Typo="Typo.h6" Align="Align.Left">@role.Position</MudText></MudItem>
+                        <MudItem xs="6"><MudText Typo="Typo.subtitle1" Align="Align.Right" Style="padding-right: 1em;">@role.DateFrom - @role.DateTo</MudText></MudItem>
+                        <MudItem xs="12"><MudText Typo="Typo.subtitle1" Align="Align.Left" Style="font-style: italic">@role.Company</MudText></MudItem>
+                        <MudItem xs="12"><MudText Typo="Typo.body2" Align="Align.Left">@role.Summary</MudText></MudItem>
+                    </MudGrid>
+                    <MudList Clickable="false" Dense="true" DisableGutters="true">
+                        @foreach (var detail in role.Details)
+                        {
+                            <MudListItem Text="@detail" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
+                        }
+                    </MudList>
+                }
+            </MudItem>
+            <MudItem xs="12">
+                <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
+                <div>
+                    <MudIcon Icon="@Icons.Outlined.School" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
+                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Education</MudText>
+                </div>
+                @foreach (var school in resume.Education)
+                {
+                    <MudGrid Spacing="0" Style="padding-top: 10px;">
+                        <MudItem xs="6"><MudText Typo="Typo.h6" Align="Align.Left">@school.Institution</MudText></MudItem>
+                        <MudItem xs="6"><MudText Typo="Typo.subtitle1" Align="Align.Right" Style="padding-right: 1em;">@school.DateFrom - @school.DateTo</MudText></MudItem>
+                        <MudItem xs="12"><MudText Typo="Typo.subtitle1" Align="Align.Left" Style="font-style: italic">@school.Degree</MudText></MudItem>
+                    </MudGrid>
+                }
+            </MudItem>
+            <MudItem xs="12">
+                <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
+                <div>
+                    <MudIcon Icon="@Icons.Outlined.Interests" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
+                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Interests</MudText>
+                </div>
+                <MudList Clickable="false" Dense="true" DisableGutters="true">
+                    @foreach (var interest in resume.Interests)
+                    {
+                        <MudListItem Text="@interest.Subject" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
+                    }
+                </MudList>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+}
+
+@code {
+    private Resume? resume;
+
+    protected override async Task OnInitializedAsync()
+    {
+        resume = await Http.GetFromJsonAsync<Resume>("resume-data/resume.json");
+    }
+}
