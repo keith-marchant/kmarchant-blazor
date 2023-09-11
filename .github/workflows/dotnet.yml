@@ -29,12 +29,11 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish -c Release
-    - name: Setup AWS CLI
-      uses: aws-actions/configure-aws-credentials@v1
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v3
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        role-to-assume: arn:aws:iam::136827333458:role/KMarchant-GitHub-Deployment
+        aws-region: us-east-2
     - name: Deploy
       env:
           SOURCE_DIR: '/home/runner/work/kmarchant-blazor/kmarchant-blazor/bin/Release/net6.0/publish/wwwroot'
