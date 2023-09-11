@@ -4,7 +4,7 @@
 
 <PageTitle>CV</PageTitle>
 
-@if (resume is null)
+@if (_resume is null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
@@ -13,88 +13,125 @@ else
     <MudPaper Elevation="0" Class="pa-4" Style="background-color: inherit">
         <MudGrid>
             <MudItem xs="3">
-                <MudImage Src="@resume.Profile.ProfileImage" Width="200" Height="200" Class="rounded-circle border-solid border-2" ObjectFit="ObjectFit.Cover"></MudImage>
+                <MudImage Src="@_resume.Profile.ProfileImage" Width="200" Height="200" Class="rounded-circle border-solid border-2" ObjectFit="ObjectFit.Cover"></MudImage>
             </MudItem>
             <MudItem xs="9">
                 <div>
-                    <MudText Typo="Typo.h3" GutterBottom="true">@resume.Profile.Name</MudText>
+                    <MudText Typo="Typo.h3" GutterBottom="true">@_resume.Profile.Name</MudText>
                     <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
-                    <MudText Typo="Typo.h5" GutterBottom="true">@resume.Profile.TagLine</MudText>
-                    <MudText Typo="Typo.body1">@resume.Summary.Text</MudText>
+                    <MudText Typo="Typo.h5" GutterBottom="true">@_resume.Profile.TagLine</MudText>
+                    <MudText Typo="Typo.body1">@_resume.Summary.Text</MudText>
                 </div>
             </MudItem>
             <MudItem xs="12">
                 <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
-                <div>
-                    <MudIcon Icon="@Icons.Outlined.Rocket" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
-                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Skills</MudText>
-                </div>
-                <MudList Clickable="false" Dense="true" DisableGutters="true">
-                    @foreach (var skill in resume.Skills)
-                    {
-                        <MudListItem Text="@skill" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
-                    }
-                </MudList>
+                <MudExpansionPanels>
+                    <MudExpansionPanel @bind-IsExpanded="_isSkillExpanded">
+                        <TitleContent>
+                            <div class="d-flex">
+                                <MudIcon Icon="@Icons.Outlined.Rocket" Size="Size.Large" Style="margin-right:1em;"></MudIcon>
+                                <MudText Typo="Typo.h5" Inline="true" GutterBottom="true">Skills</MudText>
+                            </div>
+                        </TitleContent>
+                        <ChildContent>
+                            <MudList Clickable="false" Dense="true" DisableGutters="true">
+                                @foreach (var skill in _resume.Skills)
+                                {
+                                    <MudListItem Text="@skill" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
+                                }
+                            </MudList>
+                        </ChildContent>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
             </MudItem>
             <MudItem xs="12">
                 <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
-                <div>
-                    <MudIcon Icon="@Icons.Outlined.BusinessCenter" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
-                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Experience</MudText>
-                </div>
-                @foreach (var role in resume.Experience.Jobs)
-                {
-                    <MudGrid Spacing="0" Style="padding-top: 10px;">
-                        <MudItem xs="6"><MudText Typo="Typo.h6" Align="Align.Left">@role.Position</MudText></MudItem>
-                        <MudItem xs="6"><MudText Typo="Typo.subtitle1" Align="Align.Right" Style="padding-right: 1em;">@role.DateFrom - @role.DateTo</MudText></MudItem>
-                        <MudItem xs="12"><MudText Typo="Typo.subtitle1" Align="Align.Left" Style="font-style: italic">@role.Company</MudText></MudItem>
-                        <MudItem xs="12"><MudText Typo="Typo.body2" Align="Align.Left">@role.Summary</MudText></MudItem>
-                    </MudGrid>
-                    <MudList Clickable="false" Dense="true" DisableGutters="true">
-                        @foreach (var detail in role.Details)
-                        {
-                            <MudListItem Text="@detail" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
-                        }
-                    </MudList>
-                }
+                <MudExpansionPanels>
+                    <MudExpansionPanel @bind-IsExpanded="_isExperienceExpanded">
+                        <TitleContent>
+                            <div class="d-flex">
+                                <MudIcon Icon="@Icons.Outlined.BusinessCenter" Size="Size.Large" Style="margin-right:1em;"></MudIcon>
+                                <MudText Typo="Typo.h5" Inline="true" GutterBottom="true">Experience</MudText>
+                            </div>
+                        </TitleContent>
+                        <ChildContent>
+                            @foreach (var role in _resume.Experience.Jobs)
+                            {
+                                <MudGrid Spacing="0" Style="padding-top: 10px;">
+                                    <MudItem xs="6"><MudText Typo="Typo.h6" Align="Align.Left">@role.Position</MudText></MudItem>
+                                    <MudItem xs="6"><MudText Typo="Typo.subtitle1" Align="Align.Right" Style="padding-right: 1em;">@role.DateFrom - @role.DateTo</MudText></MudItem>
+                                    <MudItem xs="12"><MudText Typo="Typo.subtitle1" Align="Align.Left" Style="font-style: italic">@role.Company</MudText></MudItem>
+                                    <MudItem xs="12"><MudText Typo="Typo.body2" Align="Align.Left">@role.Summary</MudText></MudItem>
+                                </MudGrid>
+                                <MudList Clickable="false" Dense="true" DisableGutters="true">
+                                    @foreach (var detail in role.Details)
+                                    {
+                                        <MudListItem Text="@detail" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
+                                    }
+                                </MudList>
+                            }
+                        </ChildContent>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
             </MudItem>
             <MudItem xs="12">
                 <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
-                <div>
-                    <MudIcon Icon="@Icons.Outlined.School" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
-                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Education</MudText>
-                </div>
-                @foreach (var school in resume.Education)
-                {
-                    <MudGrid Spacing="0" Style="padding-top: 10px;">
-                        <MudItem xs="6"><MudText Typo="Typo.h6" Align="Align.Left">@school.Institution</MudText></MudItem>
-                        <MudItem xs="6"><MudText Typo="Typo.subtitle1" Align="Align.Right" Style="padding-right: 1em;">@school.DateFrom - @school.DateTo</MudText></MudItem>
-                        <MudItem xs="12"><MudText Typo="Typo.subtitle1" Align="Align.Left" Style="font-style: italic">@school.Degree</MudText></MudItem>
-                    </MudGrid>
-                }
+                <MudExpansionPanels>
+                    <MudExpansionPanel @bind-IsExpanded="_isEducationExpanded">
+                        <TitleContent>
+                            <div class="d-flex">
+                                <MudIcon Icon="@Icons.Outlined.School" Size="Size.Large" Style="margin-right:1em;"></MudIcon>
+                                <MudText Typo="Typo.h5" Inline="true" GutterBottom="true">Education</MudText>
+                            </div>
+                        </TitleContent>
+                        <ChildContent>
+                            @foreach (var school in _resume.Education)
+                            {
+                                <MudGrid Spacing="0" Style="padding-top: 10px;">
+                                    <MudItem xs="6"><MudText Typo="Typo.h6" Align="Align.Left">@school.Institution</MudText></MudItem>
+                                    <MudItem xs="6"><MudText Typo="Typo.subtitle1" Align="Align.Right" Style="padding-right: 1em;">@school.DateFrom - @school.DateTo</MudText></MudItem>
+                                    <MudItem xs="12"><MudText Typo="Typo.subtitle1" Align="Align.Left" Style="font-style: italic">@school.Degree</MudText></MudItem>
+                                </MudGrid>
+                            }
+                        </ChildContent>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
             </MudItem>
             <MudItem xs="12">
                 <MudDivider DividerType="DividerType.Middle" Class="my-6"></MudDivider>
-                <div>
-                    <MudIcon Icon="@Icons.Outlined.Interests" Size="Size.Medium" Style="margin-right:1em;"></MudIcon>
-                    <MudText Typo="Typo.h4" Inline="true" GutterBottom="true">Interests</MudText>
-                </div>
-                <MudList Clickable="false" Dense="true" DisableGutters="true">
-                    @foreach (var interest in resume.Interests)
-                    {
-                        <MudListItem Text="@interest.Subject" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
-                    }
-                </MudList>
+                <MudExpansionPanels>
+                    <MudExpansionPanel @bind-IsExpanded="_isInterestsExpanded">
+                        <TitleContent>
+                            <div class="d-flex">
+                                <MudIcon Icon="@Icons.Outlined.Interests" Size="Size.Large" Style="margin-right:1em;"></MudIcon>
+                                <MudText Typo="Typo.h5" Inline="true" GutterBottom="true">Interests</MudText>
+                            </div>
+                        </TitleContent>
+                        <ChildContent>
+                            <MudList Clickable="false" Dense="true" DisableGutters="true">
+                                @foreach (var interest in _resume.Interests)
+                                {
+                                    <MudListItem Text="@interest.Subject" Icon="@Icons.Material.Filled.ArrowRight" IconSize="Size.Small" Dense="true"></MudListItem>
+                                }
+                            </MudList>
+                        </ChildContent>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
             </MudItem>
         </MudGrid>
     </MudPaper>
 }
 
 @code {
-    private Resume? resume;
+    private bool _isSkillExpanded = false;
+    private bool _isExperienceExpanded = false;
+    private bool _isEducationExpanded = false;
+    private bool _isInterestsExpanded = false;
+    
+    private Resume? _resume;
 
     protected override async Task OnInitializedAsync()
     {
-        resume = await Http.GetFromJsonAsync<Resume>("resume-data/resume.json");
+        _resume = await Http.GetFromJsonAsync<Resume>("resume-data/resume.json");
     }
 }
